@@ -8,11 +8,13 @@ function App() {
   const [score, setScore] = useState(0);
   const [hiScore, setHiScore] = useState(0);
   const [cardList, setCardList] = useState([]);
-  const [gameOver, setGameOver] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
   const [playerList, setPlayerList] = useState([]);
 
   const newGame = () => {
     setCardList(getCardList);
+    setScore(0);
+    setPlayerList([]);
     setGameOver(false);
   };
 
@@ -59,7 +61,7 @@ function App() {
 
   return (
     <>
-      <Header score={score} hiScore={hiScore} newGame={newGame} />
+      <Header score={score} hiScore={hiScore} newGame={newGame} gameOver={gameOver} />
       <GameBoard
         cardList={cardList}
         chooseCard={chooseCard}
