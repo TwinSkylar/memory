@@ -1,9 +1,9 @@
-export default function Card({card,handleClick}) {
+export default function Card({card,chooseCard}) {
 
   const {cardName,cardImg} = card;
     return (
       <div className="card">
-        <button onClick={handleClick}>
+        <button onClick={chooseCard}>
           <img src={cardImg}></img>
           {cardName}
           </button>
