@@ -1,8 +1,10 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import GameBoard from "./components/GameBoard";
-import logo from "./assets/react.svg";
+import _ from 'lodash';
+
+
 
 function App() {
   const [score, setScore] = useState(0);
@@ -19,12 +21,22 @@ function App() {
   };
 
   const getCardList = () => {
-    return [
-      { cardName: "Image1", cardImg: logo },
-      { cardName: "Image2", cardImg: logo },
-      { cardName: "Image3", cardImg: logo },
-    ];
+    return _.shuffle(cardList);
   };
+
+  useEffect(() => {
+    const pokemons =[];
+    const getData=async()=>{
+      for (let i=1; i<=16;i++){
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+        const pokemon = await response.json()
+        pokemons.push({cardName:pokemon.name, cardImg:pokemon.sprites.front_default})
+      }
+      setCardList(_.shuffle(pokemons));
+    }
+    getData();
+   }, []);
+
 
   const incrementScore = () => {
     setScore(score + 1);
@@ -33,7 +45,6 @@ function App() {
   useEffect(() => {
     updateHiScore();
   }, [score]);
-
 
   const updateHiScore = () => {
     console.log(score);
@@ -61,7 +72,12 @@ function App() {
 
   return (
     <>
-      <Header score={score} hiScore={hiScore} newGame={newGame} gameOver={gameOver} />
+      <Header
+        score={score}
+        hiScore={hiScore}
+        newGame={newGame}
+        gameOver={gameOver}
+      />
       <GameBoard
         cardList={cardList}
         chooseCard={chooseCard}
