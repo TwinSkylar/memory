@@ -65,6 +65,7 @@ function App() {
     ) {
       selectCard(card);
       incrementScore();
+      setCardList(_.shuffle(cardList));
     } else {
       setGameOver(true);
     }
