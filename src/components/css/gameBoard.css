@@ -1,0 +1,14 @@
+.cardList{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border:2px solid black;
+    width:100%;
+}
+
+.cardBtn{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}

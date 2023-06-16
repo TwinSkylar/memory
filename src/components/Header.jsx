@@ -1,5 +1,11 @@
-import { useState } from "react";
-
+ /*
+ Purpose:  Header component
+ Parameters: 
+  score:  The score of the current game
+  hiScore:  The highest score this session
+  newGame:  A callback function to start a new game
+  gameOver:  True if the game is over
+ */
 export default function Header({ score, hiScore, newGame, gameOver }) {
   return (
     <>

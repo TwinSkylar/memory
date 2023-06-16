@@ -1,7 +1,14 @@
 import Card from "./Card";
-import { useState } from "react";
 import "./css/gameBoard.css"
 
+
+ /*
+ Purpose:  Gameboard component
+ Parameters: 
+  cardList:  the list of cards a player may choose from
+  chooseCard:  a callback function to handle the choice of a card
+  gameOver:  True if the game is over
+ */
 
 export default function GameBoard({ cardList, chooseCard,gameOver}) {
 
